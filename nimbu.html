@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <body>
+<a href="old.html"></a>
+</body>
+  <title>Nimbu's Special Message ❤️</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1a202c;
+      color: white;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #app-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    #message-container {
+      text-align: center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      z-index: 10;
+      max-width: 90%;
+      padding: 1rem;
+    }
+    #nimbu-message {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #FFD700;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7), 0 0 25px rgba(255, 215, 0, 0.4);
+      margin-bottom: 1rem;
+    }
+    #sub-message {
+      font-size: 1.3rem;
+      color: #ADD8E6;
+      font-weight: 300;
+      max-width: 80%;
+      margin: 0 auto;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #cute-note {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      color: #ff6b81;
+      text-shadow: 0 0 10px rgba(255, 107, 129, 0.5);
+      margin: 1.5rem 0;
+      max-width: 90%;
+    }
+    .particle {
+      position: absolute;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 5;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-150vh) rotate(0deg); opacity: var(--initial-opacity, 0.9); }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    #back-button {
+      background: linear-gradient(145deg, #ff6b81, #e05e70);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 2rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    #back-button.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #memories-container {
+      margin-top: 2rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .memory {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .memory img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    .memory p {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
+      color: #FFD700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+      #nimbu-message { font-size: 2.2rem; }
+      #sub-message { font-size: 1rem; }
+      #cute-note { font-size: 1.5rem; }
+      #back-button { font-size: 1rem; padding: 0.8rem 1.5rem; }
+      .memory p { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="song.mp3" type="audio/mp3">
+  </audio>
+
+  <div id="app-container">
+    <div id="message-container">
+      <h1 id="nimbu-message">From Nimbu's Heart</h1>
+      <p id="sub-message">Aarzoo, your 20th birthday is a milestone, and I'm so grateful to share it with you! Here's to countless more moments together. ❤️</p>
+      <p id="cute-note">My dearest Aarzoo, from our cozy home cuddles to our train adventures, every moment with you feels like a little gift. Watching you shine at 20 fills my heart with joy—you're my sunshine, my travel buddy, and my everything! Let's make more memories to cherish forever. ❤️🤍</p>
+      <div id="memories-container">
+        <div class="memory">
+          <img src="1.jpg" alt="Memory 1">
+          <p>"Your calm moments bring me peace like no other. ❤️"</p>
+        </div>
+        <div class="memory">
+          <img src="2.jpg" alt="Memory 2">
+          <p>"I knew you'd be my forever. 🤍"</p>
+        </div>
+        <div class="memory">
+          <img src="3.jpg" alt="Memory 3">
+          <p>"Seeing you at 20 makes me dream bigger. ❤️"</p>
+        </div>
+        <div class="memory">
+          <img src="4.jpg" alt="Memory 4">
+          <p>"Let her rest, because if my shoulder can be her comfort, I’ll hold still forever." 🤍"</p>
+        </div>
+        <div class="memory">
+          <img src="5.jpg" alt="Memory 5">
+          <p>"Holding your hand feels like holding the whole world — calm, warm, and mine.🤍"</p>
+          <div class="memory">
+          <img src="6.jpg" alt="Memory 5">
+          <p>"This smile of yours lights up my whole world. 💛"</p>
+        </div>
+      </div>
+      <a id="back-button" href="index.html">Back to Celebration</a>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 5 
+  rem; font-size: 4.5rem; color: #ff6b81; font-family: 'Great Vibes', cursive;">
+    Love you ❤️
+</p>
+
+
+  <script>
+    const appContainer = document.getElementById('app-container');
+    const messageContainer = document.getElementById('message-container');
+    const backButton = document.getElementById('back-button');
+    const music = document.getElementById('bg-music');
+
+    const emojis = [
+      { symbol: '❤️', color: '#ff6b81' },
+      { symbol: '🤍', color: '#ffffff' }
+    ];
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+      particle.innerHTML = randomEmoji.symbol;
+      particle.style.color = randomEmoji.color;
+      const side = Math.random() < 0.5 ? 'left' : 'right';
+      const leftPosition = side === 'left' ? Math.random() * 35 : 65 + Math.random() * 35;
+      particle.style.left = leftPosition + 'vw';
+      particle.style.fontSize = (Math.random() * (2.5 - 1.5) + 1.5) + 'rem';
+      particle.style.setProperty('--initial-opacity', Math.random() * (0.35 - 0.2) + 0.2);
+      particle.style.animationDuration = (Math.random() * 12 + 12) + 's';
+      particle.style.animationDelay = (Math.random() * 4) + 's';
+      appContainer.appendChild(particle);
+      particle.addEventListener('animationend', () => particle.remove());
+    }
+
+    function startFallingParticles() {
+      setInterval(() => createParticle(), 250);
+    }
+
+    function revealContent() {
+      messageContainer.style.opacity = 1;
+      setTimeout(() => backButton.classList.add('visible'), 1000);
+    }
+
+    function fadeInMusic(targetVolume = 0.4, duration = 5000) {
+      music.volume = 0;
+      const step = 50;
+      const increment = targetVolume / (duration / step);
+      let vol = 0;
+      const fadeInterval = setInterval(() => {
+        if (vol < targetVolume) {
+          vol = Math.min(vol + increment, targetVolume);
+          music.volume = vol;
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, step);
+    }
+
+    window.onload = function () {
+      messageContainer.style.opacity = 0;
+      backButton.style.opacity = 0;
+      startFallingParticles();
+      revealContent();
+      music.play().then(() => fadeInMusic()).catch(() => {});
+    };
+  </script>
+</body>
+</html>

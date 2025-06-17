@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Special Birthday Surprise For You! ❤️</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      background-color: #1a202c;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #app-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: white;
+    }
+    #surprise-message-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      z-index: 10;
+    }
+    #surprise-message {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #FFD700;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+    #sub-message {
+      font-size: 1.3rem;
+      color: #ADD8E6;
+      margin-top: 0.5rem;
+    }
+    #celebrate-question {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      color: #f0f0f0;
+    }
+    .choice-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      position: relative;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .yes-btn {
+      background-color: #28a745;
+      color: white;
+    }
+    .no-btn {
+      background-color: #dc3545;
+      color: white;
+      position: absolute;
+    }
+    #pumping-heart {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: #ff6b81;
+      animation: pulse 1s ease-in-out infinite;
+      z-index: 20;
+    }
+    #nimbu-heart {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      font-size: 1rem;
+      color: #FFD700;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      z-index: 20;
+      text-decoration: none;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    #reveal-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 30;
+      transition: opacity 1s ease-out;
+    }
+    #reveal-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 5;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-150vh) rotate(0deg); opacity: var(--initial-opacity, 0.9); }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background music -->
+  <audio id="bg-music" loop>
+    <source src="song1.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div id="reveal-overlay">
+    <p>Click anywhere to begin the surprise!</p>
+  </div>
+
+  <div id="app-container">
+    <div id="surprise-message-container">
+      <h1 id="surprise-message"></h1>
+      <p id="sub-message"></p>
+      <h2 style="
+        font-size: 2rem;
+        color: #ffd1dc;
+        font-family: 'Great Vibes', cursive;
+        text-shadow: 0 0 8px rgba(255, 192, 203, 0.7), 0 0 15px rgba(255, 182, 193, 0.5);
+        margin-top: 3.5rem;
+        margin-bottom: 3.5rem;
+        font-weight: normal;
+      ">Wanna celebrate this birthday with me?</h2>
+
+     <div class="choice-buttons">
+  <button class="btn yes-btn" onclick="alert('Yay! Let’s celebrate 🎉')">🎉 Yes</button>
+  <button class="btn no-btn" id="noBtn" style="left: 150px;">🙈 No</button>
+</div>
+    </div>
+
+    <div id="pumping-heart">❤️</div>
+    <a id="nimbu-heart" href="nimbu.html" onclick="document.getElementById('bg-music').pause();">Nimbu's Heart</a>
+
+  </div>
+
+  <script>
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.volume = 0;
+
+    const revealOverlay = document.getElementById('reveal-overlay');
+    const surpriseMessageContainer = document.getElementById('surprise-message-container');
+    const surpriseMessage = document.getElementById('surprise-message');
+    const subMessage = document.getElementById('sub-message');
+    const appContainer = document.getElementById('app-container');
+    const noBtn = document.getElementById('noBtn');
+    const mainMessage = "Happy 20th Birthday, My Dear Aarzoo!";
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const hearts = ['❤️', '🤍'];
+      const symbol = hearts[Math.floor(Math.random() * hearts.length)];
+      particle.innerHTML = symbol;
+      particle.style.color = symbol === '❤️' ? '#ff6b81' : '#ffffff';
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+      particle.style.setProperty('--initial-opacity', Math.random() * 0.3 + 0.2);
+      particle.style.animationDuration = (Math.random() * 8 + 10) + 's';
+      appContainer.appendChild(particle);
+      particle.addEventListener('animationend', () => {
+        particle.remove();
+      });
+    }
+
+    function startFallingParticles() {
+      setInterval(createParticle, 250);
+    }
+
+    function revealContent() {
+      surpriseMessageContainer.style.opacity = 1;
+      surpriseMessage.textContent = mainMessage;
+      subMessage.textContent = 'Your smile lights up my world, Aarzoo! Happy 20th Birthday! ✨';
+    }
+    
+    noBtn.addEventListener('mouseover', () => {
+      const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+      const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+      noBtn.style.left = `${newX}px`;
+      noBtn.style.top = `${newY}px`;
+    });
+
+    window.onload = () => {
+      revealOverlay.addEventListener('click', () => {
+        revealOverlay.classList.add('hidden');
+        startFallingParticles();
+        revealContent();
+
+        // Start music fade-in after user click
+        bgMusic.play();
+        let fadeInInterval = setInterval(() => {
+          if (bgMusic.volume < 1.0) {
+            bgMusic.volume = Math.min(1.0, bgMusic.volume + 0.02);
+          } else {
+            clearInterval(fadeInInterval);
+          }
+        }, 200);
+      }, { once: true });
+    };
+  </script>
+</body>
+</html>
